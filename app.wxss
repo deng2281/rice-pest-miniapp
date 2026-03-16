@@ -1,0 +1,39 @@
+/**app.wxss**/
+.ui-page {
+  padding: 30rpx;
+  padding-bottom: 140rpx;
+  box-sizing: border-box;
+}
+
+.ui-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 24rpx;
+  margin-bottom: 16rpx;
+}
+
+.ui-section-title {
+  font-size: 32rpx;
+  font-weight: 700;
+  color: #2b2b2b;
+}
+
+.ui-section-link {
+  font-size: 24rpx;
+  color: #0052D9;
+  font-weight: 400;
+  transition: color 0.2s;
+}
+
+.ui-section-link:active {
+  color: #0033a0;
+}
+
+.ui-card {
+  width: 100%;
+  background: #fff;
+  border-radius: 16rpx;
+  box-shadow: 0 8rpx 20rpx rgba(0, 0, 0, 0.06);
+  box-sizing: border-box;
+}

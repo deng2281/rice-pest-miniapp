@@ -1,0 +1,44 @@
+<view class="page">
+  <view class="header">
+    <view class="title">批量识别</view>
+    <view class="subtitle">拍照或从相册选择多张水稻病虫害图片</view>
+  </view>
+
+  <view class="card">
+    <view class="toolbar">
+      <view class="meta">
+        已选 <text class="meta-strong">{{selectedCount}}</text> / {{images.length}}
+      </view>
+      <view class="tools">
+        <text class="tool" bindtap="toggleSelectAll" selectable="false">{{allSelected ? '取消全选' : '全选'}}</text>
+      </view>
+    </view>
+
+    <view class="thumbs" wx:if="{{images.length}}">
+      <block wx:for="{{images}}" wx:key="id">
+        <view class="thumb-item" bindtap="toggleSelect" data-id="{{item.id}}">
+          <image class="thumb-img" src="{{item.path}}" mode="aspectFill"></image>
+          <view class="thumb-mask {{item.selected ? 'checked' : ''}}">
+            <view class="check-dot">{{item.selected ? '✓' : ''}}</view>
+          </view>
+          <view class="thumb-status">{{item.statusText}}</view>
+          <view class="thumb-del" catchtap="deleteImage" data-id="{{item.id}}">×</view>
+        </view>
+      </block>
+      <view class="thumb-add" bindtap="chooseImage">
+        <view class="thumb-add-icon">＋</view>
+        <view class="thumb-add-text">添加</view>
+      </view>
+    </view>
+    <view wx:else class="upload-frame" bindtap="chooseImage">
+      <view class="placeholder-icon">📷</view>
+      <view class="placeholder-text">点击添加图片</view>
+      <view class="placeholder-sub">支持拍照或从相册选择多张</view>
+    </view>
+
+    <button class="cta" bindtap="startBatchAnalysis" loading="{{loading}}" disabled="{{loading || selectedCount === 0}}">
+      开始识别<text wx:if="{{selectedCount > 0}}">（{{selectedCount}}）</text>
+    </button>
+    <view class="hint">提示：点击缩略图可勾选/取消；点击右上角 × 可删除</view>
+  </view>
+</view>

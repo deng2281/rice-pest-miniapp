@@ -1,0 +1,33 @@
+<view class="ui-page">
+  <view class="page-header">
+    <view class="page-title">
+      <text class="page-icon">🕘</text>
+      <text>历史记录</text>
+    </view>
+    <view class="page-subtitle">查看全部识别结果与分析报告</view>
+  </view>
+  <view class="history-toolbar" wx:if="{{historyList.length}}">
+    <view class="history-count">共 {{historyList.length}} 条</view>
+    <view class="history-actions">
+      <text class="history-action" bindtap="clearHistory">清空</text>
+    </view>
+  </view>
+  <view class="record-list">
+    <block wx:for="{{historyList}}" wx:key="id">
+      <view class="ui-card record-card" bindtap="goResult" data-item="{{item}}">
+        <image class="record-img" src="{{item.image || '/utils/placeholder.png'}}" mode="aspectFill"></image>
+        <view class="record-info">
+          <view class="record-top">
+            <text class="record-name">{{item.name}}</text>
+            <view class="tag {{item._status === 'pending' ? 'tag-pending' : (item._status === 'fail' ? 'tag-fail' : (item.severity === '重度' ? 'tag-danger' : (item.severity === '中度' ? 'tag-warning' : 'tag-success')) )}}">
+              {{item.severity}}
+            </view>
+          </view>
+          <text class="record-date">{{item.date}}</text>
+        </view>
+        <view class="record-del" catchtap="deleteRecord" data-id="{{item.id}}">×</view>
+        <view class="record-arrow">›</view>
+      </view>
+    </block>
+  </view>
+</view>

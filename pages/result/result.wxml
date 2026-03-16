@@ -1,0 +1,82 @@
+<view class="container">
+  
+  <!-- 结果主卡片 -->
+  <view class="result-card">
+    <view class="card-header">
+      <view class="title-row">
+        <view class="main-title">{{result.disease_name}}</view>
+        <view class="severity-tag {{result.severity === '重度' ? 'tag-danger' : (result.severity === '中度' ? 'tag-warning' : 'tag-success')}}">{{result.severity}}</view>
+      </view>
+      <view class="sub-title">{{result.scientific_name || ''}}</view>
+    </view>
+
+    <image class="result-image" src="{{result.imageUrl}}" mode="aspectFill"></image>
+
+    <view class="section-block">
+      <view class="block-title">诊断结论</view>
+      <view class="block-content">{{result.diagnosis}}</view>
+    </view>
+
+    <view class="confidence-block">
+      <view class="confidence-row">
+        <view class="confidence-label">⚡ 识别置信度</view>
+        <view class="confidence-value">{{result.confidence}}%</view>
+      </view>
+      <progress percent="{{result.confidence}}" border-radius="10" stroke-width="6" activeColor="#1aad19" backgroundColor="#e9e9e9" />
+      <view class="confidence-tip">识别结果高度可靠</view>
+    </view>
+  </view>
+
+  <!-- 详细诊断 Tabs -->
+  <view class="detail-section">
+    <view class="detail-title">详细诊断</view>
+    <view class="tabs">
+      <view class="tab-item {{activeTab === 'pathogen' ? 'active' : ''}}" bindtap="switchTab" data-tab="pathogen">病原体</view>
+      <view class="tab-item {{activeTab === 'harm' ? 'active' : ''}}" bindtap="switchTab" data-tab="harm">危害评估</view>
+      <view class="tab-item {{activeTab === 'trend' ? 'active' : ''}}" bindtap="switchTab" data-tab="trend">趋势预测</view>
+    </view>
+
+    <view class="tab-content">
+      <!-- 病原体 -->
+      <view class="content-box" wx:if="{{activeTab === 'pathogen'}}">
+        <view class="content-header">
+          <text class="icon-microscope">🦠</text> 病原体科普
+        </view>
+        <view class="content-text">{{result.pathogen_info || '暂无详细信息'}}</view>
+      </view>
+
+      <!-- 危害评估 -->
+      <view class="content-box" wx:if="{{activeTab === 'harm'}}">
+        <view class="content-header">
+          <text class="icon-alert">⚠️</text> 危害等级评估
+        </view>
+        <view class="content-text">{{result.harm_level_desc}}</view>
+        <view class="harm-meter">
+          <view class="harm-label">当前危害程度</view>
+          <view class="harm-value">{{result.harm_percentage}}%</view>
+        </view>
+        <progress percent="{{result.harm_percentage}}" border-radius="10" stroke-width="8" activeColor="#ff9900" backgroundColor="#e9e9e9" />
+      </view>
+
+      <!-- 趋势预测 -->
+      <view class="content-box" wx:if="{{activeTab === 'trend'}}">
+        <view class="content-header">
+          <text class="icon-trend">📈</text> 扩散趋势预测
+        </view>
+        <view class="content-text">{{result.trend_prediction}}</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部操作栏 -->
+  <view class="action-area">
+    <view class="prevention-preview">
+      <view class="preview-title">防治建议</view>
+      <view class="preview-desc">针对该病害的快速防治指南...</view>
+    </view>
+    
+    <button class="btn-report" bindtap="viewReport">查看完整防治方案</button>
+    <button class="btn-rescan" bindtap="reScan">重新拍摄识别</button>
+  </view>
+
+</view>

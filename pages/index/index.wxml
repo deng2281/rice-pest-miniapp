@@ -1,0 +1,80 @@
+<!--index.wxml-->
+<view class="ui-page">
+
+  <view class="page-header">
+    <view class="page-title">
+      <text class="page-icon">🏠</text>
+      <text>首页</text>
+    </view>
+    <view class="page-subtitle">AI 智能诊断水稻病虫害</view>
+  </view>
+
+  <view class="ui-card weather-card" bindtap="refreshWeatherWarning">
+    <view class="weather-top">
+      <view class="weather-left">
+        <view class="weather-icon">
+          <text class="weather-emoji">{{weather.icon}}</text>
+        </view>
+        <view class="weather-main">
+          <view class="weather-temp">{{weather.temperature}}<text class="weather-unit">°C</text></view>
+          <view class="weather-desc">{{weather.weatherText}}</view>
+        </view>
+      </view>
+      <view class="weather-right">
+        <view class="risk-pill {{weather.riskClass}}">{{weather.riskLabel}}</view>
+        <view class="humidity">湿度 {{weather.humidity}}%</view>
+      </view>
+    </view>
+
+    <view class="weather-bottom">
+      <view class="weather-loc">
+        <text class="loc-emoji">📍</text>
+        <text class="loc-text">{{weather.location}}</text>
+      </view>
+      <view class="weather-warn">
+        <text wx:if="{{weatherLoading}}">正在获取天气…</text>
+        <text wx:elif="{{warningLoading}}">正在生成病虫害预警…</text>
+        <text wx:else>{{weather.warningText}}</text>
+      </view>
+    </view>
+  </view>
+  
+  <view class="ui-section">
+    <view class="ui-section-title">快速识别</view>
+  </view>
+
+  <view class="ui-card scan-card">
+    <view class="scan-circle" bindtap="chooseImage">
+      <view class="camera-icon"></view>
+    </view>
+    <view class="scan-title">拍照识别病虫害</view>
+    <view class="scan-desc">点击拍照或上传水稻图片，AI 将快速识别病虫害</view>
+    <button class="btn-start" bindtap="chooseImage">
+      <text class="icon-upload">↑</text> 开始识别
+    </button>
+  </view>
+
+  <view class="ui-section">
+    <view class="ui-section-title">近期识别记录</view>
+    <view class="ui-section-link" bindtap="goHistory">查看全部 ></view>
+  </view>
+
+  <view class="record-list">
+    <block wx:for="{{recentRecords}}" wx:key="id">
+      <view class="ui-card record-card" bindtap="goResult" data-item="{{item}}">
+        <image class="record-img" src="{{item.image || '/utils/placeholder.png'}}" mode="aspectFill"></image>
+        <view class="record-info">
+          <view class="record-top">
+            <text class="record-name">{{item.name}}</text>
+            <view class="tag {{item.severity === '重度' ? 'tag-danger' : (item.severity === '中度' ? 'tag-warning' : 'tag-success')}}">
+              {{item.severity}}
+            </view>
+          </view>
+          <text class="record-date">{{item.date}}</text>
+        </view>
+        <view class="record-arrow">›</view>
+      </view>
+    </block>
+  </view>
+
+</view>

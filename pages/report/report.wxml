@@ -1,0 +1,122 @@
+<view class="container">
+  
+  <view class="report-header">
+    <view class="header-title">诊断详情报告</view>
+  </view>
+
+  <!-- 头部卡片 -->
+  <view class="summary-card">
+    <image class="summary-image" src="{{result.imageUrl}}" mode="aspectFill"></image>
+    <view class="summary-info">
+      <view class="summary-name">{{result.disease_name}}</view>
+      <view class="summary-latin">{{result.scientific_name}}</view>
+      <view class="summary-confidence">
+        <text>识别置信度</text>
+        <text class="conf-val">{{result.confidence}}%</text>
+      </view>
+      <progress percent="{{result.confidence}}" border-radius="10" stroke-width="4" activeColor="#1aad19" backgroundColor="#e9e9e9" />
+      <view class="summary-desc">{{result.diagnosis}}</view>
+    </view>
+  </view>
+
+  <!-- 病原体科普 -->
+  <view class="detail-card">
+    <view class="card-title-row">
+      <text class="icon">🧬</text>
+      <text class="card-title">病原体科普</text>
+    </view>
+    <view class="card-content">
+      {{result.pathogen_info || '暂无详细信息'}}
+    </view>
+    <view class="tip-box">
+      <icon type="info" size="14" color="#1aad19"></icon>
+      <text>了解病原体特性有助于制定更有效的防治策略</text>
+    </view>
+  </view>
+
+  <!-- 危害等级评估 -->
+  <view class="detail-card">
+    <view class="card-title-row">
+      <text class="icon">⚠️</text>
+      <text class="card-title">危害等级评估</text>
+      <view class="tag {{result.severity === '重度' ? 'tag-danger' : (result.severity === '中度' ? 'tag-warning' : 'tag-success')}}">{{result.severity}}危害</view>
+    </view>
+    
+    <view class="harm-row">
+      <text>当前危害程度</text>
+      <text class="harm-val">{{result.harm_percentage}}%</text>
+    </view>
+    <progress percent="{{result.harm_percentage}}" border-radius="10" stroke-width="8" activeColor="#ff9900" backgroundColor="#e9e9e9" />
+    
+    <view class="card-content" style="margin-top: 20rpx;">
+      {{result.harm_level_desc}}
+    </view>
+    
+    <view class="tip-box tip-blue">
+      <icon type="info" size="14" color="#1890ff"></icon>
+      <text>建议立即采取防治措施，防止病害进一步扩散</text>
+    </view>
+  </view>
+
+  <!-- 扩散趋势预测 -->
+  <view class="detail-card">
+    <view class="card-title-row">
+      <text class="icon">📈</text>
+      <text class="card-title">扩散趋势预测</text>
+    </view>
+    <view class="card-content">
+      {{result.trend_prediction}}
+    </view>
+    
+    <view class="risk-row">
+      <view class="risk-item risk-low">
+        <view class="risk-period">短期 (3天)</view>
+        <view class="risk-level">中等风险</view>
+      </view>
+      <view class="risk-item risk-med">
+        <view class="risk-period">中期 (7天)</view>
+        <view class="risk-level">较高风险</view>
+      </view>
+      <view class="risk-item risk-high">
+        <view class="risk-period">长期 (14天)</view>
+        <view class="risk-level">高风险</view>
+      </view>
+    </view>
+
+    <view class="tip-box">
+      <icon type="warn" size="14" color="#666"></icon>
+      <text>根据预测趋势，建议提前准备防治物资</text>
+    </view>
+  </view>
+
+  <!-- 防治建议 -->
+  <view class="detail-card">
+    <view class="card-title-row">
+      <text class="icon">🛡️</text>
+      <text class="card-title">防治建议</text>
+    </view>
+    
+    <view class="measure-list">
+      <block wx:for="{{result.prevention_measures}}" wx:key="type">
+        <view class="measure-item">
+          <view class="measure-icon">
+            <text wx:if="{{item.type=='化学防治'}}">💧</text>
+            <text wx:elif="{{item.type=='生物防治'}}">🐞</text>
+            <text wx:else>🌱</text>
+          </view>
+          <view class="measure-content">
+            <view class="measure-type">{{item.type}}</view>
+            <view class="measure-text">{{item.content}}</view>
+          </view>
+        </view>
+      </block>
+    </view>
+    
+    <button class="btn-full" bindtap="copyMeasures">📋 复制完整防治方案</button>
+  </view>
+
+  <view class="footer-actions">
+    <button class="btn-home" bindtap="goHome">🏠 返回首页</button>
+  </view>
+
+</view>

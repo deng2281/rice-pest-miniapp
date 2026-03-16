@@ -1,0 +1,142 @@
+page {
+  background-color: #f5f7fa;
+  padding-bottom: 20rpx;
+}
+
+.page-header {
+  margin-bottom: 24rpx;
+  padding-left: 10rpx;
+}
+
+.page-title {
+  display: flex;
+  align-items: center;
+  font-size: 38rpx;
+  font-weight: 700;
+  color: #1a1a1a;
+  gap: 12rpx;
+}
+
+.page-icon {
+  font-size: 40rpx;
+}
+
+.page-subtitle {
+  margin-top: 8rpx;
+  font-size: 24rpx;
+  color: #8a8a8a;
+}
+
+.history-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10rpx 0 24rpx;
+  padding: 0 10rpx;
+}
+
+.history-count {
+  font-size: 24rpx;
+  color: #8a8a8a;
+}
+
+.history-actions {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+}
+
+.history-action {
+  font-size: 24rpx;
+  color: #e11d48;
+  font-weight: 700;
+  padding: 10rpx 14rpx;
+  border-radius: 14rpx;
+  background: rgba(225, 29, 72, 0.08);
+  border: 1rpx solid rgba(225, 29, 72, 0.18);
+}
+
+.record-list {
+  display: flex;
+  flex-direction: column;
+  gap: 32rpx;
+}
+
+.record-card {
+  height: 176rpx;
+  padding: 24rpx;
+  display: flex;
+  align-items: center;
+}
+
+.record-img {
+  width: 104rpx;
+  height: 104rpx;
+  border-radius: 16rpx;
+  background-color: #eee;
+  margin-right: 24rpx;
+  flex-shrink: 0;
+}
+
+.record-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.record-top {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10rpx;
+}
+
+.record-name {
+  font-size: 32rpx;
+  font-weight: 700;
+  color: #222;
+  margin-right: 16rpx;
+}
+.tag {
+  font-size: 22rpx;
+  padding: 6rpx 14rpx;
+  border-radius: 22rpx;
+  color: #fff;
+}
+.tag-danger { background-color: #e02020; }
+.tag-warning { background-color: #ff9900; }
+.tag-success { background-color: #1aad19; }
+.tag-pending { background-color: #64748b; }
+.tag-fail { background-color: #e11d48; }
+
+.record-date {
+  font-size: 24rpx;
+  color: #8a8a8a;
+}
+
+.record-arrow {
+  width: 44rpx;
+  height: 44rpx;
+  border-radius: 50%;
+  background: #f3f7f5;
+  color: #7aa38f;
+  font-size: 30rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.record-del {
+  width: 44rpx;
+  height: 44rpx;
+  border-radius: 50%;
+  background: rgba(17, 24, 39, 0.10);
+  color: rgba(17, 24, 39, 0.65);
+  font-size: 34rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-right: 14rpx;
+}

@@ -1,0 +1,249 @@
+/** report.wxss */
+page {
+  background-color: #f5f7fa;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  padding-bottom: 60rpx;
+}
+
+.container {
+  padding: 30rpx;
+}
+
+.report-header {
+  margin-bottom: 30rpx;
+  text-align: center;
+}
+
+.header-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+/* 头部概要卡片 */
+.summary-card {
+  background: #fff;
+  border-radius: 24rpx;
+  overflow: hidden;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.05);
+  margin-bottom: 30rpx;
+}
+
+.summary-image {
+  width: 100%;
+  height: 360rpx;
+  background-color: #eee;
+}
+
+.summary-info {
+  padding: 30rpx;
+}
+
+.summary-name {
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 6rpx;
+}
+
+.summary-latin {
+  font-size: 28rpx;
+  color: #888;
+  font-style: italic;
+  margin-bottom: 24rpx;
+}
+
+.summary-confidence {
+  display: flex;
+  justify-content: space-between;
+  font-size: 26rpx;
+  color: #666;
+  margin-bottom: 10rpx;
+}
+
+.conf-val {
+  color: #1aad19;
+  font-weight: bold;
+}
+
+.summary-desc {
+  margin-top: 24rpx;
+  font-size: 28rpx;
+  color: #333;
+  line-height: 1.6;
+  padding-top: 20rpx;
+  border-top: 1rpx solid #eee;
+}
+
+/* 详情通用卡片 */
+.detail-card {
+  background: #fff;
+  border-radius: 24rpx;
+  padding: 30rpx;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.05);
+  margin-bottom: 30rpx;
+}
+
+.card-title-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24rpx;
+}
+
+.icon {
+  font-size: 36rpx;
+  margin-right: 16rpx;
+}
+
+.card-title {
+  font-size: 34rpx;
+  font-weight: bold;
+  color: #333;
+  flex: 1;
+}
+
+.tag {
+  font-size: 22rpx;
+  padding: 6rpx 16rpx;
+  border-radius: 20rpx;
+  color: #fff;
+  font-weight: bold;
+}
+.tag-danger { background-color: #e02020; }
+.tag-warning { background-color: #ff9900; }
+.tag-success { background-color: #1aad19; }
+
+.card-content {
+  font-size: 28rpx;
+  color: #555;
+  line-height: 1.7;
+  margin-bottom: 24rpx;
+}
+
+.tip-box {
+  background: #f0f9eb;
+  padding: 20rpx;
+  border-radius: 12rpx;
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+}
+
+.tip-box text {
+  font-size: 24rpx;
+  color: #1aad19;
+}
+
+.tip-blue {
+  background: #e6f7ff;
+}
+.tip-blue text {
+  color: #1890ff;
+}
+
+/* 危害进度 */
+.harm-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 26rpx;
+  color: #666;
+  margin-bottom: 10rpx;
+}
+
+.harm-val {
+  color: #ff9900;
+  font-weight: bold;
+}
+
+/* 风险行 */
+.risk-row {
+  display: flex;
+  gap: 20rpx;
+  margin-bottom: 24rpx;
+}
+
+.risk-item {
+  flex: 1;
+  background: #f5f5f5;
+  padding: 16rpx;
+  border-radius: 12rpx;
+  text-align: center;
+}
+
+.risk-period {
+  font-size: 22rpx;
+  color: #888;
+  margin-bottom: 8rpx;
+}
+
+.risk-level {
+  font-size: 26rpx;
+  font-weight: bold;
+}
+
+.risk-low .risk-level { color: #faad14; }
+.risk-med .risk-level { color: #ff4d4f; }
+.risk-high .risk-level { color: #cf1322; }
+
+/* 防治列表 */
+.measure-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24rpx;
+  margin-bottom: 30rpx;
+}
+
+.measure-item {
+  display: flex;
+  align-items: flex-start;
+}
+
+.measure-icon {
+  width: 60rpx;
+  height: 60rpx;
+  background: #f0f9eb;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20rpx;
+  font-size: 30rpx;
+  flex-shrink: 0;
+}
+
+.measure-content {
+  flex: 1;
+}
+
+.measure-type {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 6rpx;
+}
+
+.measure-text {
+  font-size: 26rpx;
+  color: #666;
+  line-height: 1.5;
+}
+
+.btn-full {
+  background: #1aad19;
+  color: #fff;
+  font-size: 30rpx;
+  border-radius: 40rpx;
+}
+
+.footer-actions {
+  margin-top: 40rpx;
+  text-align: center;
+}
+
+.btn-home {
+  background: #fff;
+  color: #333;
+  font-size: 30rpx;
+  border-radius: 40rpx;
+  width: 200rpx;
+}
